@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FD3C494A70C522BCC001D5F1 /* Pods_SubmitForm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5807055C29D608D302BC9EB1 /* Pods_SubmitForm.framework */; };
 		FF34004E233104E10064032B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF34004D233104E10064032B /* AppDelegate.swift */; };
 		FF340050233104E10064032B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF34004F233104E10064032B /* ViewController.swift */; };
 		FF340053233104E10064032B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF340051233104E10064032B /* Main.storyboard */; };
@@ -15,6 +16,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F98B5570CAF20F4E9EBACD6 /* Pods-SubmitForm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SubmitForm.debug.xcconfig"; path = "Target Support Files/Pods-SubmitForm/Pods-SubmitForm.debug.xcconfig"; sourceTree = "<group>"; };
+		5807055C29D608D302BC9EB1 /* Pods_SubmitForm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SubmitForm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B33A712B7437693566787D6F /* Pods-SubmitForm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SubmitForm.release.xcconfig"; path = "Target Support Files/Pods-SubmitForm/Pods-SubmitForm.release.xcconfig"; sourceTree = "<group>"; };
 		FF34004A233104E10064032B /* SubmitForm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SubmitForm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF34004D233104E10064032B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF34004F233104E10064032B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -29,17 +33,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD3C494A70C522BCC001D5F1 /* Pods_SubmitForm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		402B34887B07151D7E88D779 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1F98B5570CAF20F4E9EBACD6 /* Pods-SubmitForm.debug.xcconfig */,
+				B33A712B7437693566787D6F /* Pods-SubmitForm.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		DD8CF0043443654F916EC267 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5807055C29D608D302BC9EB1 /* Pods_SubmitForm.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		FF340041233104E10064032B = {
 			isa = PBXGroup;
 			children = (
 				FF34004C233104E10064032B /* SubmitForm */,
 				FF34004B233104E10064032B /* Products */,
+				402B34887B07151D7E88D779 /* Pods */,
+				DD8CF0043443654F916EC267 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,9 +96,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FF34005C233104E40064032B /* Build configuration list for PBXNativeTarget "SubmitForm" */;
 			buildPhases = (
+				5F8F3E588DF9AF20FD8AF647 /* [CP] Check Pods Manifest.lock */,
 				FF340046233104E10064032B /* Sources */,
 				FF340047233104E10064032B /* Frameworks */,
 				FF340048233104E10064032B /* Resources */,
+				C425B2F6D4728C9C25BC2D0E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -129,6 +156,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5F8F3E588DF9AF20FD8AF647 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SubmitForm-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C425B2F6D4728C9C25BC2D0E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SubmitForm/Pods-SubmitForm-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SubmitForm/Pods-SubmitForm-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SubmitForm/Pods-SubmitForm-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FF340046233104E10064032B /* Sources */ = {
@@ -280,6 +349,7 @@
 		};
 		FF34005D233104E40064032B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1F98B5570CAF20F4E9EBACD6 /* Pods-SubmitForm.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -298,6 +368,7 @@
 		};
 		FF34005E233104E40064032B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B33A712B7437693566787D6F /* Pods-SubmitForm.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
