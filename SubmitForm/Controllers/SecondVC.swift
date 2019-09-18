@@ -143,15 +143,21 @@ class SecondVC: UIViewController {
             array.removeLast()
             array.append("other: \(otherReason)")
             self.resultVM!.resultOptions = array
-            print(self.resultVM)
+//            print(self.resultVM)
+            self.resultVM!.addToRealm()
+            print("vms Count = \(self.resultVM!.getDocumentsCount())")
             
         }else if reason! == .specialistApointment || reason! == .reaserchApointment  {
             self.resultVM!.resultOptions = resultArray
             self.resultVM!.resultOptions?.append("apoimentTime: \(self.timeTextField.text!)")
-            print(self.resultVM)
+//            print(self.resultVM)
+            self.resultVM!.addToRealm()
+            print("vms Count = \(self.resultVM!.getDocumentsCount())")
         } else {
             self.resultVM!.resultOptions = resultArray
-            print(self.resultVM)
+//            print(self.resultVM)
+            self.resultVM!.addToRealm()
+            print("vms Count = \(self.resultVM!.getDocumentsCount())")
 
         }
         

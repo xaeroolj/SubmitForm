@@ -16,6 +16,12 @@ struct ResultViewModel {
     let reason: VisitReason?
     var resultOptions: [String]?
     
+    func getDocumentsCount() -> Int {
+        return RealmService().getAllDocuments().count
+    }
     
+    func addToRealm() {
+        RealmService().addDocument(fName: self.firstName!, lName: self.lastName!, phone: self.phone!, email: self.email!, reason: self.reason!, options: self.resultOptions ?? nil)
+    }
 }
 

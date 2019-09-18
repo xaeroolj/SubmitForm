@@ -131,10 +131,13 @@ class MainVC: UIViewController {
         case .diaperBox:
             //need to go to finish
             self.createRecord()
+            self.resultVM!.addToRealm()
+            print("vms Count = \(self.resultVM!.getDocumentsCount())")
             break
         case .noReason:
             //will show dialog box for input reason
             self.showDialogBox()
+            
             break
         }
         
@@ -147,6 +150,8 @@ class MainVC: UIViewController {
         }
         let action = UIAlertAction(title: "OK", style: .default) { (action) in
             self.createRecord(reason: alert.textFields?.last?.text)
+            self.resultVM!.addToRealm()
+            print("vms Count = \(self.resultVM!.getDocumentsCount())")
         }
         let actionCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alert.addAction(action)
@@ -158,13 +163,16 @@ class MainVC: UIViewController {
         guard let reason = reason, reason.count > 0 else {return}
         let vm = ResultViewModel(firstName: firstNameTextField.text, lastName: lastNameTextField.text, phone: phoneTextField.text, email: emailTextField.text, reason: VisitReason(rawValue: reasonTextField.text!), resultOptions: [reason])
         self.resultVM = vm
-        print("vm = \(vm)")
+//        vm.addToRealm()
+////        print("vm = \(vm)")
+//        print("vms Count = \(vm.getDocumentsCount())")
     }
     fileprivate func createRecord() {
         
         let vm = ResultViewModel(firstName: firstNameTextField.text, lastName: lastNameTextField.text, phone: phoneTextField.text, email: emailTextField.text, reason: VisitReason(rawValue: reasonTextField.text!), resultOptions:nil)
         self.resultVM = vm
-        print("vm = \(vm)")
+//        vm.addToRealm()
+//        print("vms Count = \(vm.getDocumentsCount())")
     }
     
     
