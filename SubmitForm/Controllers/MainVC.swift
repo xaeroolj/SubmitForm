@@ -25,6 +25,7 @@ class MainVC: UIViewController {
     var reasonPicker: UIPickerView!
     
     var reasonPickerValues: [String] = VisitReason.allCases.map {$0.rawValue}
+    var resultVM: ResultViewModel?
     
     
     
@@ -80,7 +81,7 @@ class MainVC: UIViewController {
         if segue.identifier == "dropView" {
             let vc = segue.destination as? SecondVC
             let reason = VisitReason(rawValue: reasonTextField.text!)!
-            vc?.setupView(reason: reason)
+            vc?.setupView(vm: resultVM!)
         }
     }
     
@@ -108,18 +109,23 @@ class MainVC: UIViewController {
         guard let reason = VisitReason(rawValue: reasonTextField.text!) else {return}
         switch reason {
         case .dropOff:
+            self.createRecord()
             performSegue(withIdentifier: "dropView", sender: nil)
             break
         case .pickUp:
+            self.createRecord()
             performSegue(withIdentifier: "dropView", sender: nil)
             break
         case .specialistApointment:
+            self.createRecord()
             performSegue(withIdentifier: "dropView", sender: nil)
             break
         case .reaserchApointment:
+            self.createRecord()
             performSegue(withIdentifier: "dropView", sender: nil)
             break
         case .referalService:
+            self.createRecord()
             performSegue(withIdentifier: "dropView", sender: nil)
             break
         case .diaperBox:
@@ -150,11 +156,18 @@ class MainVC: UIViewController {
 
     fileprivate func createRecord(reason: String?) {
         guard let reason = reason, reason.count > 0 else {return}
-        print(reason)
+        let vm = ResultViewModel(firstName: firstNameTextField.text, lastName: lastNameTextField.text, phone: phoneTextField.text, email: emailTextField.text, reason: VisitReason(rawValue: reasonTextField.text!), resultOptions: [reason])
+        self.resultVM = vm
+        print("vm = \(vm)")
     }
     fileprivate func createRecord() {
-        print("Will create record for dipper box")
+        
+        let vm = ResultViewModel(firstName: firstNameTextField.text, lastName: lastNameTextField.text, phone: phoneTextField.text, email: emailTextField.text, reason: VisitReason(rawValue: reasonTextField.text!), resultOptions:nil)
+        self.resultVM = vm
+        print("vm = \(vm)")
     }
+    
+    
 }
 extension MainVC: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

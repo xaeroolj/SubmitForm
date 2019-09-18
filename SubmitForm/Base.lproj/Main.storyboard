@@ -153,7 +153,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsMultipleSelection="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="W45-i3-bQR">
-                                <rect key="frame" x="20" y="144" width="984" height="997"/>
+                                <rect key="frame" x="20" y="144" width="984" height="937"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="eHD-KT-ibb" style="IBUITableViewCellStyleDefault" id="ZgT-0f-v64">
@@ -197,16 +197,49 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drop Off Document(s)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mwL-t2-s3H">
-                                <rect key="frame" x="392" y="79" width="240" height="30"/>
+                                <rect key="frame" x="392.5" y="79" width="239.5" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hGd-rR-Jjb">
+                                <rect key="frame" x="205" y="1101" width="200" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="4Hh-kW-ECm"/>
+                                    <constraint firstAttribute="width" constant="200" id="jTw-hC-ew0"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="onEditDob:" destination="xkr-eU-jcE" eventType="editingDidBegin" id="845-YE-3f0"/>
+                                </connections>
+                            </textField>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="wtt-42-Htc">
+                                <rect key="frame" x="20" y="1105.5" width="165" height="41"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My appointment is at:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wDJ-KP-HdE">
+                                        <rect key="frame" x="0.0" y="0.0" width="165" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mi cita es a las:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="op1-RQ-fn1">
+                                        <rect key="frame" x="0.0" y="20.5" width="116.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="qdQ-dA-pgX" firstAttribute="top" secondItem="W45-i3-bQR" secondAttribute="bottom" constant="30" id="1E9-yr-lpX"/>
+                            <constraint firstItem="qdQ-dA-pgX" firstAttribute="top" secondItem="W45-i3-bQR" secondAttribute="bottom" priority="750" constant="30" id="1E9-yr-lpX"/>
+                            <constraint firstItem="qdQ-dA-pgX" firstAttribute="top" secondItem="hGd-rR-Jjb" secondAttribute="bottom" constant="20" id="DTS-qt-fOi"/>
                             <constraint firstItem="mwL-t2-s3H" firstAttribute="centerX" secondItem="PFP-Yk-RNP" secondAttribute="centerX" id="Q2v-Xg-3Xn"/>
+                            <constraint firstItem="wtt-42-Htc" firstAttribute="centerY" secondItem="hGd-rR-Jjb" secondAttribute="centerY" id="Rrw-Di-5HX"/>
+                            <constraint firstItem="hGd-rR-Jjb" firstAttribute="leading" secondItem="wtt-42-Htc" secondAttribute="trailing" constant="20" id="T5T-8h-D4e"/>
                             <constraint firstItem="W45-i3-bQR" firstAttribute="top" secondItem="syk-kM-8s8" secondAttribute="bottom" constant="20" id="U80-qj-WxV"/>
                             <constraint firstItem="syk-kM-8s8" firstAttribute="leading" secondItem="YPj-tg-OKV" secondAttribute="leading" constant="40" id="YJQ-p2-1jN"/>
                             <constraint firstItem="YPj-tg-OKV" firstAttribute="trailing" secondItem="W45-i3-bQR" secondAttribute="trailing" constant="20" id="Yag-1h-XFf"/>
@@ -214,13 +247,18 @@
                             <constraint firstItem="syk-kM-8s8" firstAttribute="top" secondItem="YPj-tg-OKV" secondAttribute="top" constant="40" id="hRT-pr-aN1"/>
                             <constraint firstItem="mwL-t2-s3H" firstAttribute="centerY" secondItem="syk-kM-8s8" secondAttribute="centerY" id="lZJ-x4-Dwq"/>
                             <constraint firstItem="YPj-tg-OKV" firstAttribute="bottom" secondItem="qdQ-dA-pgX" secondAttribute="bottom" constant="115" id="oDy-Ky-djr"/>
+                            <constraint firstItem="wtt-42-Htc" firstAttribute="leading" secondItem="YPj-tg-OKV" secondAttribute="leading" constant="20" id="olV-P2-Ygl"/>
+                            <constraint firstItem="hGd-rR-Jjb" firstAttribute="top" secondItem="W45-i3-bQR" secondAttribute="bottom" constant="20" id="pvi-7I-6eo"/>
                             <constraint firstItem="qdQ-dA-pgX" firstAttribute="leading" secondItem="YPj-tg-OKV" secondAttribute="leading" constant="20" id="rUM-yj-kxc"/>
                             <constraint firstItem="YPj-tg-OKV" firstAttribute="trailing" secondItem="qdQ-dA-pgX" secondAttribute="trailing" constant="20" id="rps-8K-65Z"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YPj-tg-OKV"/>
                     </view>
                     <connections>
+                        <outlet property="apointmentLableStackView" destination="wtt-42-Htc" id="e2n-Pp-Qvu"/>
+                        <outlet property="downConstraint" destination="oDy-Ky-djr" id="hIF-R8-4GE"/>
                         <outlet property="tableView" destination="W45-i3-bQR" id="ZvX-YG-Dh1"/>
+                        <outlet property="timeTextField" destination="hGd-rR-Jjb" id="i5j-rz-kwj"/>
                         <outlet property="titleLabel" destination="mwL-t2-s3H" id="VGH-gX-od0"/>
                     </connections>
                 </viewController>

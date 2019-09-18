@@ -10,28 +10,91 @@ import UIKit
 
 class SecondVC: UIViewController {
 
+    @IBOutlet weak var apointmentLableStackView: UIStackView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    
+    @IBOutlet weak var timeTextField: UITextField!
+    @IBOutlet weak var downConstraint: NSLayoutConstraint! // 115
     var reason: VisitReason?
     var sourceStrings: [String]!
     var othereReason: String?
+    var resultVM: ResultViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let keyboardClosetap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        keyboardClosetap.cancelsTouchesInView = false
+        view.addGestureRecognizer(keyboardClosetap)
+        
         tableView.delegate = self
         tableView.dataSource = self
         initViewUI()
 
         // Do any additional setup after loading the view.
         
+        
+        
     }
-    func setupView(reason: VisitReason){
-        self.reason = reason
-        print(reason)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification: )), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(kayboardWillHide(notification: )), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+    }
+    @objc func kayboardWillHide(notification: Notification) {
+        downConstraint.constant = 115
+        //        self.view.frame.origin.y = 0
+    }
+    
+    @objc func keyboardWillShow(notification: Notification) {
+        guard let keyboardRect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {return}
+        
+        
+        //        view.frame.origin.y = -keyboardRect.height
+        downConstraint.constant = keyboardRect.height + 20
+        
+    }
+    
+    @objc func dismissKeyboard() {
+        
+        self.view.endEditing(true)
+    }
+    
+    @IBAction func onEditDob(_ sender: UITextField) {
+        let datePickerView = UIDatePicker()
+        datePickerView.datePickerMode = .time
+        sender.inputView = datePickerView
+        datePickerView.addTarget(self, action: #selector(handleDatePicker(sender:)), for: .valueChanged)
+    }
+    
+    @objc func handleDatePicker(sender: UIDatePicker) {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "h:mm a"
+        timeTextField.text = dateFormatter.string(from: sender.date)
+    }
+    
+    func setupView(vm: ResultViewModel){
+        self.reason = vm.reason!
+        self.resultVM = vm
+//        self.reason = reason
+//        print(reason)
         
     }
     fileprivate func initViewUI() {
+        timeTextField.isHidden = true
+        apointmentLableStackView.isHidden = true
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "h:mm a"
+        timeTextField.text = dateFormatter.string(from: Date())
     
         guard let reason = self.reason else {return}
         self.titleLabel.text = reason.rawValue
@@ -47,11 +110,16 @@ class SecondVC: UIViewController {
             
             self.sourceStrings = SpecialistApointmentOptions.allCases.map {$0.rawValue}
             self.tableView.allowsMultipleSelection = false
+            timeTextField.isHidden = false
+            apointmentLableStackView.isHidden = false
             break
         case .reaserchApointment:
             
             self.sourceStrings = ReaserchApointmentOptions.allCases.map {$0.rawValue}
             self.tableView.allowsMultipleSelection = false
+            timeTextField.isHidden = false
+            apointmentLableStackView.isHidden = false
+            
             break
         case .referalService:
             self.sourceStrings = ReferalServiceHelpOptions.allCases.map {$0.rawValue}
@@ -69,15 +137,21 @@ class SecondVC: UIViewController {
     
     @IBAction func submitBtnWasPressed(_ sender: Any) {
         guard let indexArray = tableView.indexPathsForSelectedRows else {return}
-//        indexArray.sorted(by: <)
         let resultArray = indexArray.sorted(by: <).map {sourceStrings[$0.row]}
         if let otherReason = self.othereReason {
             var array = resultArray
             array.removeLast()
             array.append("other: \(otherReason)")
-            print(array.joined(separator: ", "))
-        }else {
-            print(resultArray.joined(separator: ", "))
+            self.resultVM!.resultOptions = array
+            print(self.resultVM)
+            
+        }else if reason! == .specialistApointment || reason! == .reaserchApointment  {
+            self.resultVM!.resultOptions = resultArray
+            self.resultVM!.resultOptions?.append("apoimentTime: \(self.timeTextField.text!)")
+            print(self.resultVM)
+        } else {
+            self.resultVM!.resultOptions = resultArray
+            print(self.resultVM)
 
         }
         
