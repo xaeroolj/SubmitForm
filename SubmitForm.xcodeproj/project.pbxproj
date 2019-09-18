@@ -3,16 +3,19 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		FD3C494A70C522BCC001D5F1 /* Pods_SubmitForm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5807055C29D608D302BC9EB1 /* Pods_SubmitForm.framework */; };
 		FF34004E233104E10064032B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF34004D233104E10064032B /* AppDelegate.swift */; };
-		FF340050233104E10064032B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF34004F233104E10064032B /* ViewController.swift */; };
 		FF340053233104E10064032B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF340051233104E10064032B /* Main.storyboard */; };
 		FF340055233104E40064032B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF340054233104E40064032B /* Assets.xcassets */; };
 		FF340058233104E40064032B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF340056233104E40064032B /* LaunchScreen.storyboard */; };
+		FFE995BA2331107400B2E5FA /* DocumetsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE995B92331107400B2E5FA /* DocumetsModel.swift */; };
+		FFE995BE233112C800B2E5FA /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE995BD233112C800B2E5FA /* MainVC.swift */; };
+		FFE995C02331148300B2E5FA /* VisitorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE995BF2331148300B2E5FA /* VisitorModel.swift */; };
+		FFE995C423312E6C00B2E5FA /* SecondVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE995C323312E6C00B2E5FA /* SecondVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,11 +24,14 @@
 		B33A712B7437693566787D6F /* Pods-SubmitForm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SubmitForm.release.xcconfig"; path = "Target Support Files/Pods-SubmitForm/Pods-SubmitForm.release.xcconfig"; sourceTree = "<group>"; };
 		FF34004A233104E10064032B /* SubmitForm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SubmitForm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF34004D233104E10064032B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FF34004F233104E10064032B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FF340052233104E10064032B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FF340054233104E40064032B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF340057233104E40064032B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF340059233104E40064032B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FFE995B92331107400B2E5FA /* DocumetsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumetsModel.swift; sourceTree = "<group>"; };
+		FFE995BD233112C800B2E5FA /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		FFE995BF2331148300B2E5FA /* VisitorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitorModel.swift; sourceTree = "<group>"; };
+		FFE995C323312E6C00B2E5FA /* SecondVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,7 +52,6 @@
 				1F98B5570CAF20F4E9EBACD6 /* Pods-SubmitForm.debug.xcconfig */,
 				B33A712B7437693566787D6F /* Pods-SubmitForm.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -79,14 +84,33 @@
 		FF34004C233104E10064032B /* SubmitForm */ = {
 			isa = PBXGroup;
 			children = (
+				FFE995BC233112A600B2E5FA /* Controllers */,
 				FF34004D233104E10064032B /* AppDelegate.swift */,
-				FF34004F233104E10064032B /* ViewController.swift */,
 				FF340051233104E10064032B /* Main.storyboard */,
 				FF340054233104E40064032B /* Assets.xcassets */,
 				FF340056233104E40064032B /* LaunchScreen.storyboard */,
 				FF340059233104E40064032B /* Info.plist */,
+				FFE995BB2331129C00B2E5FA /* Model */,
 			);
 			path = SubmitForm;
+			sourceTree = "<group>";
+		};
+		FFE995BB2331129C00B2E5FA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FFE995B92331107400B2E5FA /* DocumetsModel.swift */,
+				FFE995BF2331148300B2E5FA /* VisitorModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FFE995BC233112A600B2E5FA /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FFE995BD233112C800B2E5FA /* MainVC.swift */,
+				FFE995C323312E6C00B2E5FA /* SecondVC.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,8 +228,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF340050233104E10064032B /* ViewController.swift in Sources */,
 				FF34004E233104E10064032B /* AppDelegate.swift in Sources */,
+				FFE995C423312E6C00B2E5FA /* SecondVC.swift in Sources */,
+				FFE995BE233112C800B2E5FA /* MainVC.swift in Sources */,
+				FFE995C02331148300B2E5FA /* VisitorModel.swift in Sources */,
+				FFE995BA2331107400B2E5FA /* DocumetsModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,7 +389,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = RTekhlebov.SubmitForm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -381,7 +408,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = RTekhlebov.SubmitForm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
