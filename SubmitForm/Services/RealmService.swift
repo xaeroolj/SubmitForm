@@ -27,9 +27,10 @@ class RealmService {
         
     }
     
-    func addDocument(fName: String, lName: String, phone: String, email: String, reason: VisitReason, options: [String]?) {
+    func addDocument(status: String, fName: String, lName: String, phone: String, email: String, reason: VisitReason, options: [String]?) {
         
         let document = DocumentModel()
+        document.status = status
         document.firstName = fName
         document.lastName = lName
         document.phone = phone
@@ -69,18 +70,22 @@ class RealmService {
 //
 //    }
     
-//    func getPerson(index: Int) -> PersonViewModel{
-//        let name = RealmService().getAllPersons()[index].name
-//
-//        let personVM = PersonViewModel(name)
-//        return personVM
-//
-//
-//    }
-//
+    func getDocument(index: Int) -> DocumentModel{
+        
+        return RealmService().getAllDocuments()[index]
+
+
+    }
+
     func getAllDocuments() -> Results<DocumentModel> {
         let result = realm.objects(DocumentModel.self)
         return result
+    }
+    func clearAllData() {
+        
+        try! realm.write {
+            realm.deleteAll()
+        }
     }
     
 }

@@ -14,6 +14,7 @@
 		FF340058233104E40064032B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF340056233104E40064032B /* LaunchScreen.storyboard */; };
 		FF7E475923327740007151FB /* ResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7E475823327740007151FB /* ResultViewModel.swift */; };
 		FF7E475B2332847B007151FB /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7E475A2332847B007151FB /* RealmService.swift */; };
+		FF7E475D233293C9007151FB /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7E475C233293C9007151FB /* SettingsVC.swift */; };
 		FFE995BA2331107400B2E5FA /* DocumetsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE995B92331107400B2E5FA /* DocumetsModel.swift */; };
 		FFE995BE233112C800B2E5FA /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE995BD233112C800B2E5FA /* MainVC.swift */; };
 		FFE995C02331148300B2E5FA /* VisitorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE995BF2331148300B2E5FA /* VisitorModel.swift */; };
@@ -32,6 +33,7 @@
 		FF340059233104E40064032B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF7E475823327740007151FB /* ResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewModel.swift; sourceTree = "<group>"; };
 		FF7E475A2332847B007151FB /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
+		FF7E475C233293C9007151FB /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		FFE995B92331107400B2E5FA /* DocumetsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumetsModel.swift; sourceTree = "<group>"; };
 		FFE995BD233112C800B2E5FA /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		FFE995BF2331148300B2E5FA /* VisitorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitorModel.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 			children = (
 				FFE995BD233112C800B2E5FA /* MainVC.swift */,
 				FFE995C323312E6C00B2E5FA /* SecondVC.swift */,
+				FF7E475C233293C9007151FB /* SettingsVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 				FF7E475B2332847B007151FB /* RealmService.swift in Sources */,
 				FFE995C423312E6C00B2E5FA /* SecondVC.swift in Sources */,
 				FFE995BE233112C800B2E5FA /* MainVC.swift in Sources */,
+				FF7E475D233293C9007151FB /* SettingsVC.swift in Sources */,
 				FFE995C02331148300B2E5FA /* VisitorModel.swift in Sources */,
 				FFE995BA2331107400B2E5FA /* DocumetsModel.swift in Sources */,
 			);

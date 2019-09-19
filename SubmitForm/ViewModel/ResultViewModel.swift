@@ -9,6 +9,7 @@
 import Foundation
 
 struct ResultViewModel {
+    let status: String?
     let firstName: String?
     let lastName: String?
     let phone: String?
@@ -21,7 +22,7 @@ struct ResultViewModel {
     }
     
     func addToRealm() {
-        RealmService().addDocument(fName: self.firstName!, lName: self.lastName!, phone: self.phone!, email: self.email!, reason: self.reason!, options: self.resultOptions ?? nil)
+        RealmService().addDocument(status: self.status!, fName: self.firstName!, lName: self.lastName!, phone: self.phone!, email: self.email!, reason: self.reason!, options: self.resultOptions ?? nil)
     }
 }
 

@@ -160,8 +160,7 @@ class SecondVC: UIViewController {
             print("vms Count = \(self.resultVM!.getDocumentsCount())")
 
         }
-        
-        
+        performSegue(withIdentifier: "backToMain", sender: nil)
     }
     
 

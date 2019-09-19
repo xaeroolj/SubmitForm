@@ -133,6 +133,7 @@ class MainVC: UIViewController {
             self.createRecord()
             self.resultVM!.addToRealm()
             print("vms Count = \(self.resultVM!.getDocumentsCount())")
+            self.clearForm()
             break
         case .noReason:
             //will show dialog box for input reason
@@ -152,6 +153,7 @@ class MainVC: UIViewController {
             self.createRecord(reason: alert.textFields?.last?.text)
             self.resultVM!.addToRealm()
             print("vms Count = \(self.resultVM!.getDocumentsCount())")
+            self.clearForm()
         }
         let actionCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alert.addAction(action)
@@ -161,18 +163,28 @@ class MainVC: UIViewController {
 
     fileprivate func createRecord(reason: String?) {
         guard let reason = reason, reason.count > 0 else {return}
-        let vm = ResultViewModel(firstName: firstNameTextField.text, lastName: lastNameTextField.text, phone: phoneTextField.text, email: emailTextField.text, reason: VisitReason(rawValue: reasonTextField.text!), resultOptions: [reason])
+        var visitorStatusString = ""
+        switch visitorSegmentedControl.selectedSegmentIndex {
+        case 0:
+            visitorStatusString = "Parent / PADRE"
+        default:
+            visitorStatusString = "Provider / PROVEEDOR"
+        }
+        let vm = ResultViewModel(status: visitorStatusString , firstName: firstNameTextField.text, lastName: lastNameTextField.text, phone: phoneTextField.text, email: emailTextField.text, reason: VisitReason(rawValue: reasonTextField.text!), resultOptions: [reason])
         self.resultVM = vm
-//        vm.addToRealm()
-////        print("vm = \(vm)")
-//        print("vms Count = \(vm.getDocumentsCount())")
+
     }
     fileprivate func createRecord() {
-        
-        let vm = ResultViewModel(firstName: firstNameTextField.text, lastName: lastNameTextField.text, phone: phoneTextField.text, email: emailTextField.text, reason: VisitReason(rawValue: reasonTextField.text!), resultOptions:nil)
+        var visitorStatusString = ""
+        switch visitorSegmentedControl.selectedSegmentIndex {
+        case 0:
+            visitorStatusString = "Parent / PADRE"
+        default:
+            visitorStatusString = "Provider / PROVEEDOR"
+        }
+        let vm = ResultViewModel(status: visitorStatusString, firstName: firstNameTextField.text, lastName: lastNameTextField.text, phone: phoneTextField.text, email: emailTextField.text, reason: VisitReason(rawValue: reasonTextField.text!), resultOptions:nil)
         self.resultVM = vm
-//        vm.addToRealm()
-//        print("vms Count = \(vm.getDocumentsCount())")
+
     }
     
     
@@ -194,6 +206,21 @@ extension MainVC: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
         reasonTextField.text = reasonPickerValues[row]
         self.view.endEditing(true)
+    }
+    
+    @IBAction func cancel(_ unwindSegue: UIStoryboardSegue) {
+        self.clearForm()
+        //will clear
+    }
+    
+    fileprivate func clearForm() {
+        self.visitorSegmentedControl.selectedSegmentIndex = 0
+        self.firstNameTextField.text = ""
+        self.lastNameTextField.text = ""
+        self.phoneTextField.text = ""
+        self.emailTextField.text = ""
+        reasonTextField.text = reasonPickerValues[0]
+        
     }
 }
 
