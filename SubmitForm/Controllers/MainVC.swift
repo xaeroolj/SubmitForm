@@ -52,15 +52,15 @@ class MainVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification: )), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(kayboardWillHide(notification: )), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification: )), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(kayboardWillHide(notification: )), name: .UIKeyboardWillHide, object: nil)
         
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
         
     }
     
@@ -80,7 +80,7 @@ class MainVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "dropView" {
             let vc = segue.destination as? SecondVC
-            let reason = VisitReason(rawValue: reasonTextField.text!)!
+//            let reason = VisitReason(rawValue: reasonTextField.text!)!
             vc?.setupView(vm: resultVM!)
         }
     }
@@ -91,11 +91,17 @@ class MainVC: UIViewController {
     }
     
     @objc func keyboardWillShow(notification: Notification) {
-        guard let keyboardRect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {return}
+//        guard let keyboardRect = (notification.userInfo?[.UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {return}
+        
+        if let keyboardFrame: NSValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            bottomConstraint.constant = keyboardHeight + 20
+        }
         
         
         //        view.frame.origin.y = -keyboardRect.height
-        bottomConstraint.constant = keyboardRect.height + 20
+//        bottomConstraint.constant = keyboardRect.height + 20
         
     }
     
